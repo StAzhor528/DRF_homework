@@ -1,22 +1,22 @@
 import React from 'react'
-
+import {Link} from 'react-router-dom';
 const Menu = () => {
     return (
         <ul class="navbar">
           <li>
-            <a href="#">
+            <Link to="/">
                 Пользователи
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="#">
+            <Link to="/projects">
                 Проекты
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="#">
+            <Link to="/todos">
                 Заметки
-            </a>
+            </Link>
           </li>
         </ul>
 

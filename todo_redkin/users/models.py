@@ -7,4 +7,4 @@ class User(AbstractUser):
     email = models.EmailField(_('email adress'), unique=True)
 
     def __str__(self):
-        return f'{self.first_name} {self.last_name} {self.email}'
+        return f'{self.first_name} {self.last_name}'

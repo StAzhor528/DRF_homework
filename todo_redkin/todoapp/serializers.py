@@ -5,7 +5,7 @@ from users.serializers import UserModelSerializer
 
 
 class ProjectHyperlinkedSerializer(HyperlinkedModelSerializer):
-    # users = StringRelatedField(many=True)
+    users = StringRelatedField(many=True)
 
     class Meta:
         model = Project
