@@ -1,5 +1,7 @@
-import React from 'react'
+import React from 'react';
 import {Link} from 'react-router-dom';
+//import App from '../App.js';
+
 const Menu = () => {
     return (
         <ul class="navbar">
@@ -18,9 +20,16 @@ const Menu = () => {
                 Заметки
             </Link>
           </li>
+          <li>
+            {this.is_authenticated() ?
+            <button onClick={()=>this.logout()}>Logout</button> :
+            <Link to="/login">
+                Login
+            </Link>}
+          </li>
         </ul>
 
     )
 }
 
-export default Menu
+export default Menu;
