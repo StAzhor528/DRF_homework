@@ -5,7 +5,8 @@ from rest_framework.response import Response
 
 from rest_framework.viewsets import ModelViewSet
 from .models import Project, TODO
-from .serializers import ProjectHyperlinkedSerializer, TODOHyperlinkedSerializer
+from .serializers import ProjectHyperlinkedSerializer, TODOHyperlinkedSerializer, ProjectSerializerBase, \
+    TODOSerializerBase
 
 
 class ProjectLimitOffsetPagination(LimitOffsetPagination):
@@ -17,6 +18,11 @@ class ProjectModelViewSet(ModelViewSet):
     serializer_class = ProjectHyperlinkedSerializer
     renderer_classes = [JSONRenderer, BrowsableAPIRenderer]
     pagination_class = ProjectLimitOffsetPagination
+
+    def get_serializer_class(self):
+        if self.request.method in ['GET']:
+            return ProjectHyperlinkedSerializer
+        return ProjectSerializerBase
 
     def get_queryset(self):
         return Project.objects.filter(name__contains='test')
@@ -32,6 +38,11 @@ class TODOViewSet(ModelViewSet):
     serializer_class = TODOHyperlinkedSerializer
     pagination_class = TODOLimitOffsetPagination
     filterset_fields = ['project']
+
+    def get_serializer_class(self):
+        if self.request.method in ['GET']:
+            return TODOHyperlinkedSerializer
+        return TODOSerializerBase
 
     def destroy(self, request, *args, **kwargs):
         instance = self.get_object()

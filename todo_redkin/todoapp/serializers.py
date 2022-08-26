@@ -12,8 +12,21 @@ class ProjectHyperlinkedSerializer(HyperlinkedModelSerializer):
         fields = ['name', 'users', 'link']
 
 
+class ProjectSerializerBase(ModelSerializer):
+    class Meta:
+        model = Project
+        fields = ['name', 'users', 'link']
+
+
 class TODOHyperlinkedSerializer(HyperlinkedModelSerializer):
     # user = UserModelSerializer()
+
+    class Meta:
+        model = TODO
+        fields = ['project', 'text', 'user', 'is_active']
+
+
+class TODOSerializerBase(ModelSerializer):
 
     class Meta:
         model = TODO
