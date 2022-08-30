@@ -1,5 +1,5 @@
 from django.core.management.base import BaseCommand
-from users.models import User
+from users.models import CustomUser
 
 
 class Command(BaseCommand):
@@ -9,10 +9,10 @@ class Command(BaseCommand):
         parser.add_argument('count', type=int)
 
     def handle(self, *args, **options):
-        User.objects.all().delete()
+        CustomUser.objects.all().delete()
         user_count = options['count']
 
-        User.objects.create_superuser('Ivan', 'ivan@ivan.iv', '123', first_name='Ivan', last_name='Ivanov')
+        CustomUser.objects.create_superuser('Ivan', 'ivan@ivan.iv', '123', first_name='Ivan', last_name='Ivanov')
 
         for i in range(user_count):
-            User.objects.create_user(f'user{i}', f'user{i}@user.user', f'user{i}', first_name=f'user{i}', last_name=f'user{i}')
+            CustomUser.objects.create_user(f'user{i}', f'user{i}@user.user', f'user{i}', first_name=f'user{i}', last_name=f'user{i}')
