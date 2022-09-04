@@ -3,7 +3,7 @@ from django.contrib.auth.models import AbstractUser
 from django.utils.translation import ugettext_lazy as _
 
 
-class CustomUser(AbstractUser):
+class User(AbstractUser):
     email = models.EmailField(_('email adress'), unique=True)
 
     def __str__(self):

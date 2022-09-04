@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'drf_yasg',
+    'graphene_django',
 
     # main
     'rest_framework',
@@ -132,7 +133,7 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-AUTH_USER_MODEL = 'users.customuser'
+AUTH_USER_MODEL = 'users.user'
 
 REST_FRAMEWORK = {
     'DEFAULT_RENDERER-CLASSES': [
@@ -157,4 +158,8 @@ REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 100,
 
+}
+
+GRAPHENE = {
+    "SCHEMA": "todo_redkin.schema.schema"
 }

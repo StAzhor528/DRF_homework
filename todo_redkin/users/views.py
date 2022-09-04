@@ -1,12 +1,12 @@
 from rest_framework.renderers import JSONRenderer, BrowsableAPIRenderer
 from rest_framework.mixins import ListModelMixin, RetrieveModelMixin, UpdateModelMixin, CreateModelMixin
 from rest_framework.viewsets import GenericViewSet
-from .models import CustomUser
+from .models import User
 from .serializers import UserModelSerializer, UserModelSerializerWithSuperUserAndStaff
 
 
 class UserCustomViewSet(ListModelMixin, RetrieveModelMixin, UpdateModelMixin, GenericViewSet, CreateModelMixin):
-    queryset = CustomUser.objects.all()
+    queryset = User.objects.all()
     serializer_class = UserModelSerializer
     renderer_classes = [JSONRenderer, BrowsableAPIRenderer]
 
