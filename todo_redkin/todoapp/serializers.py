@@ -9,13 +9,13 @@ class ProjectHyperlinkedSerializer(HyperlinkedModelSerializer):
 
     class Meta:
         model = Project
-        fields = ['name', 'users', 'link']
+        fields = ['id', 'name', 'users', 'link']
 
 
 class ProjectSerializerBase(ModelSerializer):
     class Meta:
         model = Project
-        fields = ['name', 'users', 'link']
+        fields = ['id', 'name', 'users', 'link']
 
 
 class TODOHyperlinkedSerializer(HyperlinkedModelSerializer):
@@ -23,11 +23,11 @@ class TODOHyperlinkedSerializer(HyperlinkedModelSerializer):
 
     class Meta:
         model = TODO
-        fields = ['project', 'text', 'user', 'is_active']
+        fields = ['id', 'project', 'text', 'user', 'is_active']
 
 
 class TODOSerializerBase(ModelSerializer):
 
     class Meta:
         model = TODO
-        fields = ['project', 'text', 'user', 'is_active']
+        fields = ['id', 'project', 'text', 'user', 'is_active']

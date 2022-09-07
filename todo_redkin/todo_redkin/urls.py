@@ -24,7 +24,7 @@ schema_view = get_schema_view(
 router = DefaultRouter()
 router.register('users', UserCustomViewSet)
 router.register('projects', ProjectModelViewSet)
-router.register('todo', TODOViewSet, basename='todo')
+router.register('todos', TODOViewSet, basename='todos')
 
 urlpatterns = [
     path('admin/', admin.site.urls),

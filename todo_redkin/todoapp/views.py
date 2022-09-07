@@ -24,9 +24,6 @@ class ProjectModelViewSet(ModelViewSet):
             return ProjectHyperlinkedSerializer
         return ProjectSerializerBase
 
-    def get_queryset(self):
-        return Project.objects.filter(name__contains='test')
-
 
 class TODOLimitOffsetPagination(LimitOffsetPagination):
     default_limit = 20
@@ -37,7 +34,6 @@ class TODOViewSet(ModelViewSet):
     queryset = TODO.objects.all()
     serializer_class = TODOHyperlinkedSerializer
     pagination_class = TODOLimitOffsetPagination
-    filterset_fields = ['project']
 
     def get_serializer_class(self):
         if self.request.method in ['GET']:
